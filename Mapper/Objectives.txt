@@ -8,6 +8,9 @@ TO DO
 - put app on phone
 
 --> REFACTOR
+- repetition
+- ugly workarounds for the title and stuff - maybe pass the annotation?
+- opacity for objects lower down the chain
 
 - ability to add fountains to map
 - ability to comment on fountains

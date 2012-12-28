@@ -1,9 +1,8 @@
 //
-//  MapperViewController.m
+//  MapViewController.m
 //  Mapper
 //
 //  Created by JAMES HARRIS on 12/21/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "MapViewController.h"
@@ -12,19 +11,14 @@
 
 @interface MapViewController () <MKMapViewDelegate>
 
-@property (nonatomic)NSString *detailComments;
-@property (nonatomic)NSString *detailLocation;
-@property (nonatomic)NSString *detailTitle;
+@property (nonatomic) GenericAnnotation *annotationForDetailView;
 
 @end
 
 @implementation MapViewController
 
-@synthesize detailComments = _detailComments;
-@synthesize detailLocation = _detailLocation;
-@synthesize detailTitle = _detailTitle;
-
 @synthesize myMap = _myMap;
+@synthesize annotationForDetailView = _annotationForDetailView;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -32,19 +26,19 @@
         [segue.destinationViewController setFountainList:self.myMap.annotations];
         [segue.destinationViewController setDelegate:self];
     } else if ([segue.identifier isEqualToString:@"Map to Detail"]) {
-        [segue.destinationViewController setTestLocationString:self.detailLocation];
-        [segue.destinationViewController setTestCommentsString:self.detailComments];
-        [segue.destinationViewController setTestFountainTitleString:self.detailTitle];
+        [segue.destinationViewController setAnnotation:self.annotationForDetailView];
     }
 }
 
 - (void)listViewerViewController:(ListViewController *)listView choseFountain:(id)fountain
 {
-    GenericAnnotation *asdf = fountain;
+    GenericAnnotation *chosenAnnotation = fountain;
+
     CLLocationCoordinate2D newCenter;
-    newCenter.latitude = asdf.coordinate.latitude;
-    newCenter.longitude = asdf.coordinate.longitude;
+    newCenter.latitude = chosenAnnotation.coordinate.latitude;
+    newCenter.longitude = chosenAnnotation.coordinate.longitude;
     [self.myMap setCenterCoordinate:newCenter];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -56,35 +50,19 @@
         aView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
                                                 reuseIdentifier:@"IDENT"];
     }
+    
     aView.canShowCallout = YES;
     aView.annotation = annotation; // yes, this happens twice if no dequeue
-    
-//    TEST
-    
-    GenericAnnotation *test = annotation;
-    if ([test.actualTitle isEqualToString:@"Fountain of Youth"]) 
-        aView.selected = YES;
-    if (aView.selected == YES) NSLog(@"selected == YES");
-    // maybe load up accessory views here (if not too expensive)?
-    // or reset them and wait until mapView:didSelectAnnotationView: to load actual data
-    
     aView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure]; 
-
+    
     return aView;
-
 }
 
 - (void)mapView:(MKMapView *)sender 
  annotationView:(MKAnnotationView *)aView
 calloutAccessoryControlTapped:(UIControl *)control
 {
-    GenericAnnotation *fountain = aView.annotation;
-    self.detailComments = fountain.comments;
-    NSString *location = [NSString stringWithFormat:@"Lat/lng: %f/%f", 
-                          fountain.coordinate.latitude, fountain.coordinate.longitude];
-    self.detailLocation = location;
-    self.detailTitle = fountain.title;
-
+    self.annotationForDetailView = aView.annotation;
     [self performSegueWithIdentifier:@"Map to Detail" sender:self];
 }
 

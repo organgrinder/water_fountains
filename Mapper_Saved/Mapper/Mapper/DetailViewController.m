@@ -3,10 +3,10 @@
 //  Mapper
 //
 //  Created by JAMES HARRIS on 12/27/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "DetailViewController.h"
+#import "GenericAnnotation.h"
 
 @interface DetailViewController ()
 
@@ -21,6 +21,13 @@
 @synthesize testLocationString = _testLocationString;
 @synthesize testCommentsString = _testCommentsString;
 @synthesize testFountainTitleString = _testFountainTitleString;
+
+@synthesize annotation = _annotation;
+
+// formatting
+//     NSString *location = [NSString stringWithFormat:@"Lat/lng: %f/%f", 
+// fountain.coordinate.latitude, fountain.coordinate.longitude];
+
 
 - (void)awakeFromNib
 {
@@ -40,9 +47,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.comments.text = self.testCommentsString;
-    self.location.text = self.testLocationString;
-    self.fountainTitle.text = self.testFountainTitleString;
+        GenericAnnotation *annotationToDisplay = self.annotation;
+    self.comments.text = annotationToDisplay.comments;
+    self.fountainTitle.text = annotationToDisplay.title;
+    
+    NSString *location = [NSString stringWithFormat:@"Lat/lng: %f/%f", 
+                          annotationToDisplay.coordinate.latitude, annotationToDisplay.coordinate.longitude];
+    self.location.text = location;
 }
 
 - (void)viewDidUnload

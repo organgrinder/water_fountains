@@ -1,9 +1,8 @@
 //
-//  ListViewerViewController.m
+//  ListViewController.m
 //  Mapper
 //
 //  Created by JAMES HARRIS on 12/21/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "ListViewController.h"
