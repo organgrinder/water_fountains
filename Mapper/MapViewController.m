@@ -84,6 +84,7 @@ calloutAccessoryControlTapped:(UIControl *)control
 
 - (void)setMyMap:(MKMapView *)myMap
 {
+    NSLog(@"setting the map");
     _mapView = myMap;
     [self initialzeViewPort];
         

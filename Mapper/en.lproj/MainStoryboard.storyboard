@@ -6,11 +6,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--List View Controller - List View-->
+        <!--List Viewer View Controller - List View-->
         <scene sceneID="wPu-gl-9cr">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGm-KN-qHO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="3QF-Rc-nDv" customClass="ListViewController" sceneMemberID="viewController">
+                <tableViewController id="3QF-Rc-nDv" customClass="ListViewerViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wuz-fz-19c">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,11 +54,11 @@
             </objects>
             <point key="canvasLocation" x="-1481" y="-1254"/>
         </scene>
-        <!--Detail View Controller - Detail View-->
+        <!--Detailed Foutain View Controller - Detail View-->
         <scene sceneID="rhk-W4-5or">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="maE-CG-kW8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="UBE-Yr-Bif" customClass="DetailViewController" sceneMemberID="viewController">
+                <viewController id="UBE-Yr-Bif" customClass="DetailedFoutainViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vzv-Xn-6ae">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -126,11 +126,11 @@
             </objects>
             <point key="canvasLocation" x="-2452" y="-882"/>
         </scene>
-        <!--Map View Controller - Map View-->
+        <!--Mapper View Controller - Map View-->
         <scene sceneID="5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
-                <viewController id="2" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController id="2" customClass="MapperViewController" sceneMemberID="viewController">
                     <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="vkc-BB-izW">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,7 +146,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="vkc-BB-izW" id="759-Uw-QCI"/>
+                        <outlet property="myMap" destination="vkc-BB-izW" id="1Um-8R-q9y"/>
                         <segue destination="UBE-Yr-Bif" kind="push" identifier="Map to Detail" id="fB1-yB-LZd"/>
                     </connections>
                 </viewController>
@@ -160,6 +160,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fB1-yB-LZd"/>
+        <segue reference="F9H-Pd-aDS"/>
     </inferredMetricsTieBreakers>
 </document>

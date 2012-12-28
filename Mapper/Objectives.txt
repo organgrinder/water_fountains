@@ -24,12 +24,14 @@ Maybe:
 - ability to delete fountains
 - icon in list for fountain
 
-Probably Not:
-- show routes/painted streets
-- show elevation heat map
+----------------------------------------------
+completing everything above this line is success
+anything below this is bonus
+
+a. show routes/painted streets
+b. show elevation heat map
 
 DONE
-
 - put project under source control
 - show comments when clicking on disclosure detail in map view
 - show comments when clicking on disclosure detail in list view
