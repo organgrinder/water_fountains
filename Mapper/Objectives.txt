@@ -54,3 +54,4 @@ DONE
 
 DONE - REFACTOR
 - pass the annotation instead of 3 vars
+- renamed classes, mapView

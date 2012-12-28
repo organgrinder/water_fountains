@@ -151,7 +151,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="myMap" destination="vkc-BB-izW" id="1Um-8R-q9y"/>
+                        <outlet property="mapView" destination="vkc-BB-izW" id="zFB-bf-Edt"/>
                         <segue destination="UBE-Yr-Bif" kind="push" identifier="Map to Detail" id="fB1-yB-LZd"/>
                     </connections>
                 </viewController>

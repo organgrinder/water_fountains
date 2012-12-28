@@ -17,13 +17,13 @@
 
 @implementation MapViewController
 
-@synthesize myMap = _myMap;
+@synthesize mapView = _mapView;
 @synthesize annotationForDetailView = _annotationForDetailView;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Map to List"]) {
-        [segue.destinationViewController setFountainList:self.myMap.annotations];
+        [segue.destinationViewController setFountainList:self.mapView.annotations];
         [segue.destinationViewController setDelegate:self];
     } else if ([segue.identifier isEqualToString:@"Map to Detail"]) {
         [segue.destinationViewController setAnnotation:self.annotationForDetailView];
@@ -37,7 +37,7 @@
     CLLocationCoordinate2D newCenter;
     newCenter.latitude = chosenAnnotation.coordinate.latitude;
     newCenter.longitude = chosenAnnotation.coordinate.longitude;
-    [self.myMap setCenterCoordinate:newCenter];
+    [self.mapView setCenterCoordinate:newCenter];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -66,14 +66,14 @@ calloutAccessoryControlTapped:(UIControl *)control
     [self performSegueWithIdentifier:@"Map to Detail" sender:self];
 }
 
-- (void)setMyMap:(MKMapView *)myMap
+- (void)setMapView:(MKMapView *)mapView
 {
-    _myMap = myMap;
+    _mapView = mapView;
     [self initialzeViewPort];
         
     for (int i = 0; i < 5; i++) {
         GenericAnnotation *myNewAnnotation = [self oneStaticFountain:i];
-        [self.myMap addAnnotation:myNewAnnotation];
+        [self.mapView addAnnotation:myNewAnnotation];
     }
     NSLog(@"in setMyMap");
 }
@@ -90,18 +90,18 @@ calloutAccessoryControlTapped:(UIControl *)control
     MKCoordinateRegion startRegion;
     startRegion.span.latitudeDelta = DEFAULT_SPAN;
     startRegion.center = startCenter;
-    [self.myMap setRegion:startRegion];
+    [self.mapView setRegion:startRegion];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.myMap.delegate = self;
+	self.mapView.delegate = self;
 }
 
 - (void)viewDidUnload
 {
-    [self setMyMap:nil];
+    [self setMapView:nil];
     [super viewDidUnload];
 }
 
