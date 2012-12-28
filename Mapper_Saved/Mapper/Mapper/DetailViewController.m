@@ -17,17 +17,8 @@
 @synthesize fountainTitle = _fountainTitle;
 @synthesize location = _location;
 @synthesize comments = _comments;
-@synthesize delegate = _delegate;
-@synthesize testLocationString = _testLocationString;
-@synthesize testCommentsString = _testCommentsString;
-@synthesize testFountainTitleString = _testFountainTitleString;
 
 @synthesize annotation = _annotation;
-
-// formatting
-//     NSString *location = [NSString stringWithFormat:@"Lat/lng: %f/%f", 
-// fountain.coordinate.latitude, fountain.coordinate.longitude];
-
 
 - (void)awakeFromNib
 {
@@ -46,14 +37,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    if ([self.annotation isKindOfClass:[GenericAnnotation class]]) {
+        // may be better to have previous VC reach into the DetailVC to set this stuff rather than having the DetailVC figure out what type of object it is displaying and set these properties
+        
         GenericAnnotation *annotationToDisplay = self.annotation;
-    self.comments.text = annotationToDisplay.comments;
-    self.fountainTitle.text = annotationToDisplay.title;
+        
+        self.comments.text = annotationToDisplay.comments;
+        self.fountainTitle.text = annotationToDisplay.title;
     
-    NSString *location = [NSString stringWithFormat:@"Lat/lng: %f/%f", 
-                          annotationToDisplay.coordinate.latitude, annotationToDisplay.coordinate.longitude];
-    self.location.text = location;
+        NSString *location = [NSString stringWithFormat:@"Lat/lng: %f/%f", 
+                              annotationToDisplay.coordinate.latitude, annotationToDisplay.coordinate.longitude];
+        self.location.text = location;
+    }
 }
 
 - (void)viewDidUnload
@@ -67,7 +63,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 @end

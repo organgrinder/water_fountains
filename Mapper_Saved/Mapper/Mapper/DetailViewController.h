@@ -15,9 +15,4 @@
 
 @property (weak, nonatomic) id annotation;
 
-@property (weak, nonatomic) NSString *testLocationString;
-@property (weak, nonatomic) NSString *testCommentsString;
-@property (weak, nonatomic) NSString *testFountainTitleString;
-@property (weak, nonatomic) id delegate;
-
 @end

@@ -13,8 +13,8 @@
 
 @protocol ListViewerViewControllerDelegate <NSObject>
 
-@optional
-- (void)listViewerViewController:(ListViewController *)sender choseFountain:(id)fountain;
+- (void)listViewerViewController:(ListViewController *)sender 
+                   choseFountain:(id)fountain;
 
 @end
 
@@ -22,6 +22,5 @@
 
 @property (nonatomic, strong)NSArray *fountainList;
 @property (nonatomic, weak) id  delegate;
-
 
 @end

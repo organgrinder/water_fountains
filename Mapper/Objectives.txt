@@ -9,8 +9,9 @@ TO DO
 
 --> REFACTOR
 - repetition
-- ugly workarounds for the title and stuff - maybe pass the annotation?
 - opacity for objects lower down the chain
+- actuaTitle stuff
+- some kind of array for initializing static list of fountains
 
 - ability to add fountains to map
 - ability to comment on fountains
@@ -35,6 +36,7 @@ a. show routes/painted streets
 b. show elevation heat map
 
 DONE
+- better titles, back buttons
 - put project under source control
 - show comments when clicking on disclosure detail in map view
 - show comments when clicking on disclosure detail in list view
@@ -49,3 +51,6 @@ DONE
 - center map on SF
 - display a few static water fountains on map (as pins)
 - display a few statc water fountains in list
+
+DONE - REFACTOR
+- pass the annotation instead of 3 vars

@@ -75,6 +75,7 @@ calloutAccessoryControlTapped:(UIControl *)control
         GenericAnnotation *myNewAnnotation = [self oneStaticFountain:i];
         [self.myMap addAnnotation:myNewAnnotation];
     }
+    NSLog(@"in setMyMap");
 }
 
 #define SF_CENTER_LAT 37.79550844953692;
@@ -111,7 +112,7 @@ calloutAccessoryControlTapped:(UIControl *)control
 
 - (GenericAnnotation *)oneStaticFountain:(int)number
 {
-    GenericAnnotation *myAnnotation = [[GenericAnnotation alloc] init];    
+    GenericAnnotation *myAnnotation = [[GenericAnnotation alloc] init];
     CLLocationCoordinate2D myCoords;
     NSString *myComments = @"No comments yet";
     NSString *myTitle = @"Water Fountain";
