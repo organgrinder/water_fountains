@@ -1,18 +1,17 @@
 //
-//  DetailedFoutainViewController.m
+//  DetailViewController.m
 //  Mapper
 //
 //  Created by JAMES HARRIS on 12/27/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "DetailedFoutainViewController.h"
+#import "DetailViewController.h"
 
-@interface DetailedFoutainViewController ()
+@interface DetailViewController ()
 
 @end
 
-@implementation DetailedFoutainViewController
+@implementation DetailViewController
 
 @synthesize fountainTitle = _fountainTitle;
 @synthesize location = _location;

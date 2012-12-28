@@ -1,14 +1,13 @@
 //
-//  DetailedFoutainViewController.h
+//  DetailViewController.h
 //  Mapper
 //
 //  Created by JAMES HARRIS on 12/27/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface DetailedFoutainViewController : UIViewController
+@interface DetailViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *fountainTitle;
 @property (weak, nonatomic) IBOutlet UILabel *location;
