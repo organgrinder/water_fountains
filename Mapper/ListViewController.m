@@ -1,8 +1,9 @@
 //
-//  ListViewController.m
+//  ListViewerViewController.m
 //  Mapper
 //
 //  Created by JAMES HARRIS on 12/21/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "ListViewController.h"
@@ -136,9 +137,9 @@
 {
     if ([segue.identifier isEqualToString:@"List to Detail"]) {
         
-//        [segue.destinationViewController setTestLocationString:self.detailLocation];
-//        [segue.destinationViewController setTestCommentsString:self.detailComments];
-//        [segue.destinationViewController setTestFountainTitleString:self.detailTitle];
+        [segue.destinationViewController setTestLocationString:self.detailLocation];
+        [segue.destinationViewController setTestCommentsString:self.detailComments];
+        [segue.destinationViewController setTestFountainTitleString:self.detailTitle];
     }
 }
 

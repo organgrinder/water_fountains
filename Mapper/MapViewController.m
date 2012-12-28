@@ -1,8 +1,9 @@
 //
-//  MapViewController.m
+//  MapperViewController.m
 //  Mapper
 //
 //  Created by JAMES HARRIS on 12/21/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "MapViewController.h"
@@ -23,13 +24,12 @@
 @synthesize detailLocation = _detailLocation;
 @synthesize detailTitle = _detailTitle;
 
-@synthesize mapView = _mapView;
+@synthesize myMap = _myMap;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Map to List"]) {
-        NSLog(@"map to list");
-        [segue.destinationViewController setFountainList:self.mapView.annotations];
+        [segue.destinationViewController setFountainList:self.myMap.annotations];
         [segue.destinationViewController setDelegate:self];
     } else if ([segue.identifier isEqualToString:@"Map to Detail"]) {
         [segue.destinationViewController setTestLocationString:self.detailLocation];
@@ -44,7 +44,7 @@
     CLLocationCoordinate2D newCenter;
     newCenter.latitude = asdf.coordinate.latitude;
     newCenter.longitude = asdf.coordinate.longitude;
-    [self.mapView setCenterCoordinate:newCenter];
+    [self.myMap setCenterCoordinate:newCenter];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -59,6 +59,12 @@
     aView.canShowCallout = YES;
     aView.annotation = annotation; // yes, this happens twice if no dequeue
     
+//    TEST
+    
+    GenericAnnotation *test = annotation;
+    if ([test.actualTitle isEqualToString:@"Fountain of Youth"]) 
+        aView.selected = YES;
+    if (aView.selected == YES) NSLog(@"selected == YES");
     // maybe load up accessory views here (if not too expensive)?
     // or reset them and wait until mapView:didSelectAnnotationView: to load actual data
     
@@ -84,13 +90,12 @@ calloutAccessoryControlTapped:(UIControl *)control
 
 - (void)setMyMap:(MKMapView *)myMap
 {
-    NSLog(@"setting the map");
-    _mapView = myMap;
+    _myMap = myMap;
     [self initialzeViewPort];
         
     for (int i = 0; i < 5; i++) {
         GenericAnnotation *myNewAnnotation = [self oneStaticFountain:i];
-        [self.mapView addAnnotation:myNewAnnotation];
+        [self.myMap addAnnotation:myNewAnnotation];
     }
 }
 
@@ -100,25 +105,24 @@ calloutAccessoryControlTapped:(UIControl *)control
 
 - (void)initialzeViewPort
 {
-    NSLog(@"initializing viewPort");
     CLLocationCoordinate2D startCenter;
     startCenter.latitude = SF_CENTER_LAT;
     startCenter.longitude = SF_CENTER_LNG;
     MKCoordinateRegion startRegion;
     startRegion.span.latitudeDelta = DEFAULT_SPAN;
     startRegion.center = startCenter;
-    [self.mapView setRegion:startRegion];
+    [self.myMap setRegion:startRegion];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.mapView.delegate = self;
+	self.myMap.delegate = self;
 }
 
 - (void)viewDidUnload
 {
-    [self setMapView:nil];
+    [self setMyMap:nil];
     [super viewDidUnload];
 }
 
