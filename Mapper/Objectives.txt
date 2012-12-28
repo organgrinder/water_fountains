@@ -3,6 +3,10 @@ TO DO
 - change static list to show some actual known fountains
 - show callout box on map for the item selected from the list when return to map from list
 
+- put project on gitHub
+- sign up for Apple stuff required to put app on phone
+- put app on phone
+
 --> REFACTOR
 
 - ability to add fountains to map
@@ -20,14 +24,13 @@ Maybe:
 - ability to delete fountains
 - icon in list for fountain
 
-----------------------------------------------
-completing everything above this line is success
-anything below this is bonus
-
-a. show routes/painted streets
-b. show elevation heat map
+Probably Not:
+- show routes/painted streets
+- show elevation heat map
 
 DONE
+
+- put project under source control
 - show comments when clicking on disclosure detail in map view
 - show comments when clicking on disclosure detail in list view
 - add title functionality
