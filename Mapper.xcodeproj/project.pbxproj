@@ -17,11 +17,11 @@
 		C4171A4C16855D80009BAE94 /* MapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4171A4B16855D80009BAE94 /* MapperViewController.m */; };
 		C4171A53168560B7009BAE94 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4171A52168560B7009BAE94 /* MapKit.framework */; };
 		C4547628168BF59F002955AA /* drinky.png in Resources */ = {isa = PBXBuildFile; fileRef = C4547627168BF59F002955AA /* drinky.png */; };
-		C454762B168CBB29002955AA /* DetailedFoutainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C454762A168CBB29002955AA /* DetailedFoutainViewController.m */; };
 		C4B829A2168A403600DD1789 /* Objectives.txt in Resources */ = {isa = PBXBuildFile; fileRef = C4B829A1168A403600DD1789 /* Objectives.txt */; };
 		C4B829AC168A694800DD1789 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4B829AB168A694800DD1789 /* CoreLocation.framework */; };
 		C4B829AF168B8A8C00DD1789 /* GenericAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B829AE168B8A8C00DD1789 /* GenericAnnotation.m */; };
 		C4E6ECB516857C8C00E9A5C5 /* ListViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E6ECB416857C8C00E9A5C5 /* ListViewerViewController.m */; };
+		C4FA8BD2168D79DE004C2ED4 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4FA8BD1168D79DE004C2ED4 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,14 +40,14 @@
 		C4171A4B16855D80009BAE94 /* MapperViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapperViewController.m; sourceTree = "<group>"; };
 		C4171A52168560B7009BAE94 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C4547627168BF59F002955AA /* drinky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drinky.png; sourceTree = "<group>"; };
-		C4547629168CBB29002955AA /* DetailedFoutainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailedFoutainViewController.h; path = ../DetailedFoutainViewController.h; sourceTree = "<group>"; };
-		C454762A168CBB29002955AA /* DetailedFoutainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailedFoutainViewController.m; path = ../DetailedFoutainViewController.m; sourceTree = "<group>"; };
 		C4B829A1168A403600DD1789 /* Objectives.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Objectives.txt; sourceTree = "<group>"; };
 		C4B829AB168A694800DD1789 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C4B829AD168B8A8C00DD1789 /* GenericAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericAnnotation.h; sourceTree = "<group>"; };
 		C4B829AE168B8A8C00DD1789 /* GenericAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericAnnotation.m; sourceTree = "<group>"; };
 		C4E6ECB316857C8C00E9A5C5 /* ListViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewerViewController.h; sourceTree = "<group>"; };
 		C4E6ECB416857C8C00E9A5C5 /* ListViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewerViewController.m; sourceTree = "<group>"; };
+		C4FA8BD0168D79DE004C2ED4 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = Mapper_Saved/Mapper/Mapper/DetailViewController.h; sourceTree = SOURCE_ROOT; };
+		C4FA8BD1168D79DE004C2ED4 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Mapper_Saved/Mapper/Mapper/DetailViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +103,8 @@
 				C4E6ECB416857C8C00E9A5C5 /* ListViewerViewController.m */,
 				C4171A4A16855D80009BAE94 /* MapperViewController.h */,
 				C4171A4B16855D80009BAE94 /* MapperViewController.m */,
-				C4547629168CBB29002955AA /* DetailedFoutainViewController.h */,
-				C454762A168CBB29002955AA /* DetailedFoutainViewController.m */,
+				C4FA8BD0168D79DE004C2ED4 /* DetailViewController.h */,
+				C4FA8BD1168D79DE004C2ED4 /* DetailViewController.m */,
 				C4B829AD168B8A8C00DD1789 /* GenericAnnotation.h */,
 				C4B829AE168B8A8C00DD1789 /* GenericAnnotation.m */,
 				C4B829A1168A403600DD1789 /* Objectives.txt */,
@@ -197,7 +197,7 @@
 				C4171A4C16855D80009BAE94 /* MapperViewController.m in Sources */,
 				C4E6ECB516857C8C00E9A5C5 /* ListViewerViewController.m in Sources */,
 				C4B829AF168B8A8C00DD1789 /* GenericAnnotation.m in Sources */,
-				C454762B168CBB29002955AA /* DetailedFoutainViewController.m in Sources */,
+				C4FA8BD2168D79DE004C2ED4 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
