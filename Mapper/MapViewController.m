@@ -8,8 +8,9 @@
 #import "MapViewController.h"
 #import "GenericAnnotation.h"
 #import "ListViewController.h"
+#import "DetailViewController.h"
 
-@interface MapViewController () <MKMapViewDelegate>
+@interface MapViewController () <MKMapViewDelegate, ListViewControllerDelegate, DetailViewControllerDelegate>
 
 @property (nonatomic) GenericAnnotation *annotationForDetailView;
 
@@ -20,6 +21,25 @@
 @synthesize mapView = _mapView;
 @synthesize annotationForDetailView = _annotationForDetailView;
 
+#pragma mark DetailViewControllerDelegate
+
+- (void)detailViewController:(DetailViewController *)sender
+             updatedComments:(NSString *)newComments 
+               forAnnotation:(id)annotation
+{
+    for (GenericAnnotation *currentAnnotation in self.mapView.annotations) {
+        if ([currentAnnotation isEqual:annotation]) {
+            currentAnnotation.comments = newComments;
+            NSString *key = [NSString stringWithFormat:@"fountain%i",
+                             currentAnnotation.number];
+            [[NSUserDefaults standardUserDefaults] setObject:newComments forKey:key];
+//            NSLog(@"new comments for");
+//            NSLog(key);
+//            NSLog([[NSUserDefaults standardUserDefaults] stringForKey:key]);
+        }
+    }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Map to List"]) {
@@ -27,10 +47,12 @@
         [segue.destinationViewController setDelegate:self];
     } else if ([segue.identifier isEqualToString:@"Map to Detail"]) {
         [segue.destinationViewController setAnnotation:self.annotationForDetailView];
+        [segue.destinationViewController setDelegate:self];
     }
 }
 
-- (void)listViewerViewController:(ListViewController *)listView choseFountain:(id)fountain
+// when returning form list view, center map on selected fountain and show callout
+- (void)listViewController:(ListViewController *)listView choseFountain:(id)fountain
 {
     GenericAnnotation *chosenAnnotation = fountain;
 
@@ -39,6 +61,12 @@
     newCenter.longitude = chosenAnnotation.coordinate.longitude;
     [self.mapView setCenterCoordinate:newCenter];
     
+    for (id<MKAnnotation> currentAnnotation in self.mapView.annotations) {       
+        if ([currentAnnotation isEqual:chosenAnnotation]) {
+            [self.mapView selectAnnotation:currentAnnotation animated:FALSE];
+        }
+    }
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -70,12 +98,9 @@ calloutAccessoryControlTapped:(UIControl *)control
 {
     _mapView = mapView;
     [self initialzeViewPort];
-        
-    for (int i = 0; i < 5; i++) {
-        GenericAnnotation *myNewAnnotation = [self oneStaticFountain:i];
-        [self.mapView addAnnotation:myNewAnnotation];
-    }
-    NSLog(@"in setMyMap");
+    
+    // add a static list of annotations to the map
+    [self.mapView addAnnotations:[self staticFountainList]];
 }
 
 #define SF_CENTER_LAT 37.79550844953692;
@@ -87,9 +112,11 @@ calloutAccessoryControlTapped:(UIControl *)control
     CLLocationCoordinate2D startCenter;
     startCenter.latitude = SF_CENTER_LAT;
     startCenter.longitude = SF_CENTER_LNG;
+
     MKCoordinateRegion startRegion;
     startRegion.span.latitudeDelta = DEFAULT_SPAN;
     startRegion.center = startCenter;
+
     [self.mapView setRegion:startRegion];
 }
 
@@ -110,12 +137,27 @@ calloutAccessoryControlTapped:(UIControl *)control
     return YES;
 }
 
+// returns a list of sample fountains at predefined locations
+- (NSArray *)staticFountainList
+{
+    NSMutableArray *fountains = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i <= 7; i++) {
+        GenericAnnotation *myNewAnnotation = [self oneStaticFountain:i];
+        [fountains addObject:myNewAnnotation];
+    }
+    
+    return fountains;
+}
+
+// helper method to add list of fountains to the map
 - (GenericAnnotation *)oneStaticFountain:(int)number
 {
-    GenericAnnotation *myAnnotation = [[GenericAnnotation alloc] init];
     CLLocationCoordinate2D myCoords;
-    NSString *myComments = @"No comments yet";
-    NSString *myTitle = @"Water Fountain";
+    NSString *myTitle = @"Water Fountain"; // default title
+    NSString *myComments = @"No comments yet"; // default comments
+
+    // simulate user-entered data
     if (number == 0) {
         myCoords.latitude = 37.79;
         myCoords.longitude = -122.39;
@@ -141,12 +183,37 @@ calloutAccessoryControlTapped:(UIControl *)control
         myCoords.longitude = -122.44;
         myComments = @"The water at this fountain is nice and cold.";
         myTitle = @"Lifesaver";
+    } else if (number == 5) {
+        myCoords.latitude = 37.77203773200978;
+        myCoords.longitude = -122.44771242141724;
+        myComments = @"By the bathrooms.  May be closed for construction.  Approximate location.";
+        myTitle = @"Panhandle Fountain";
+    } else if (number == 6) {
+        myCoords.latitude = 37.77591116824674;
+        myCoords.longitude = -122.42442816495895;
+        myComments = @"In the little park in the middle of the road.";
+        myTitle = @"Hayes Valley Sipper";
+    } else if (number == 7) {
+        myCoords.latitude = 37.79368566585406;
+        myCoords.longitude = -122.39194393157959;
+        myComments = @"It's a TRICK - the fountain is DRY!  Do not be fooled!";
+        myTitle = @"Rocket Fountain";
     }
-    
-    myAnnotation.coordinate = myCoords;
-    myAnnotation.actualTitle = myTitle;
-    myAnnotation.actualSubtitle = [NSString stringWithFormat:@"lat/lng: %f/%f", myCoords.latitude, myCoords.longitude];
-    myAnnotation.comments = myComments;
+
+    NSString *key = [NSString stringWithFormat:@"fountain%i", number];
+    NSString *savedComments;
+    savedComments = [[NSUserDefaults standardUserDefaults] stringForKey:key];
+
+    if (savedComments) myComments = savedComments;
+
+//    NSLog(key);
+//    if (savedComments) NSLog(savedComments);
+//    else NSLog(@"no saved comments");
+        
+    GenericAnnotation *myAnnotation = [[GenericAnnotation alloc] initWithTitle:myTitle
+                                                                    coordinate:myCoords 
+                                                                      comments:myComments
+                                                                        number:number];
     return myAnnotation;
 }
 

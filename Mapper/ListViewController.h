@@ -6,14 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GenericAnnotation.h"
-#import "DetailViewController.h"
 
 @class ListViewController;
 
-@protocol ListViewerViewControllerDelegate <NSObject>
+@protocol ListViewControllerDelegate <NSObject>
 
-- (void)listViewerViewController:(ListViewController *)sender 
+- (void)listViewController:(ListViewController *)sender 
                    choseFountain:(id)fountain;
 
 @end

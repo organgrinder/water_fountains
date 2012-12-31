@@ -7,14 +7,23 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController
+@class DetailViewController;
+
+@protocol DetailViewControllerDelegate <NSObject>
+
+- (void)detailViewController:(DetailViewController *)sender
+             updatedComments:(NSString *)newComments 
+               forAnnotation:(id)annotation;
+
+@end
+
+@interface DetailViewController : UIViewController <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *fountainTitle;
 @property (weak, nonatomic) IBOutlet UILabel *location;
 @property (weak, nonatomic) IBOutlet UITextView *comments;
-@property (weak, nonatomic) NSString *testLocationString;
-@property (weak, nonatomic) NSString *testCommentsString;
-@property (weak, nonatomic) NSString *testFountainTitleString;
-@property (weak, nonatomic) id delegate;
+
+@property (weak, nonatomic) id annotation;
+@property (weak) id delegate;
 
 @end

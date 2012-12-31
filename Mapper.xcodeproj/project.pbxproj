@@ -16,11 +16,11 @@
 		C4171A4916855D80009BAE94 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4171A4716855D80009BAE94 /* MainStoryboard.storyboard */; };
 		C4171A4C16855D80009BAE94 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4171A4B16855D80009BAE94 /* MapViewController.m */; };
 		C4171A53168560B7009BAE94 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4171A52168560B7009BAE94 /* MapKit.framework */; };
+		C436E5B21690E49600ADE082 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C436E5B11690E49600ADE082 /* DetailViewController.m */; };
 		C4B829A2168A403600DD1789 /* Objectives.txt in Resources */ = {isa = PBXBuildFile; fileRef = C4B829A1168A403600DD1789 /* Objectives.txt */; };
 		C4B829AC168A694800DD1789 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4B829AB168A694800DD1789 /* CoreLocation.framework */; };
 		C4B829AF168B8A8C00DD1789 /* GenericAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B829AE168B8A8C00DD1789 /* GenericAnnotation.m */; };
 		C4E6ECB516857C8C00E9A5C5 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E6ECB416857C8C00E9A5C5 /* ListViewController.m */; };
-		C4FA8BD2168D79DE004C2ED4 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4FA8BD1168D79DE004C2ED4 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,14 +38,14 @@
 		C4171A4A16855D80009BAE94 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		C4171A4B16855D80009BAE94 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		C4171A52168560B7009BAE94 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C436E5B01690E49600ADE082 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		C436E5B11690E49600ADE082 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		C4B829A1168A403600DD1789 /* Objectives.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Objectives.txt; sourceTree = "<group>"; };
 		C4B829AB168A694800DD1789 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C4B829AD168B8A8C00DD1789 /* GenericAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericAnnotation.h; sourceTree = "<group>"; };
 		C4B829AE168B8A8C00DD1789 /* GenericAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericAnnotation.m; sourceTree = "<group>"; };
 		C4E6ECB316857C8C00E9A5C5 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		C4E6ECB416857C8C00E9A5C5 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
-		C4FA8BD0168D79DE004C2ED4 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = Mapper_Saved/Mapper/Mapper/DetailViewController.h; sourceTree = SOURCE_ROOT; };
-		C4FA8BD1168D79DE004C2ED4 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Mapper_Saved/Mapper/Mapper/DetailViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +103,8 @@
 				C4171A4B16855D80009BAE94 /* MapViewController.m */,
 				C4E6ECB316857C8C00E9A5C5 /* ListViewController.h */,
 				C4E6ECB416857C8C00E9A5C5 /* ListViewController.m */,
-				C4FA8BD0168D79DE004C2ED4 /* DetailViewController.h */,
-				C4FA8BD1168D79DE004C2ED4 /* DetailViewController.m */,
+				C436E5B01690E49600ADE082 /* DetailViewController.h */,
+				C436E5B11690E49600ADE082 /* DetailViewController.m */,
 				C4B829A1168A403600DD1789 /* Objectives.txt */,
 				C4171A3C16855D80009BAE94 /* Supporting Files */,
 			);
@@ -193,7 +193,7 @@
 				C4171A4C16855D80009BAE94 /* MapViewController.m in Sources */,
 				C4E6ECB516857C8C00E9A5C5 /* ListViewController.m in Sources */,
 				C4B829AF168B8A8C00DD1789 /* GenericAnnotation.m in Sources */,
-				C4FA8BD2168D79DE004C2ED4 /* DetailViewController.m in Sources */,
+				C436E5B21690E49600ADE082 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

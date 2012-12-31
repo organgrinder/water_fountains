@@ -6,8 +6,10 @@
 //
 
 #import "ListViewController.h"
+#import "GenericAnnotation.h"
+#import "DetailViewController.h"
 
-@interface ListViewController ()
+@interface ListViewController () <DetailViewControllerDelegate>
 
 @property (nonatomic) id annotationToDisplay;
 
@@ -19,6 +21,16 @@
 
 @synthesize fountainList = _fountainList;
 @synthesize delegate = _delegate;
+
+#pragma mark - DetailViewControllerDelegate
+
+- (void)detailViewController:(DetailViewController *)sender
+             updatedComments:(NSString *)newComments 
+               forAnnotation:(id)annotation
+{
+    //just sends the message up the chain to the MapViewController
+    [self.delegate detailViewController:sender updatedComments:newComments forAnnotation:annotation];
+}
 
 #pragma mark - Initial display stuff
 
@@ -86,6 +98,7 @@
 {
     if ([segue.identifier isEqualToString:@"List to Detail"]) {
         [segue.destinationViewController setAnnotation:self.annotationToDisplay];
+        [segue.destinationViewController setDelegate:self];
     }
 }
 
@@ -94,7 +107,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GenericAnnotation *chosenFountain = [self.fountainList objectAtIndex:indexPath.row];
-    [self.delegate listViewerViewController:self choseFountain:chosenFountain];
+    [self.delegate listViewController:self choseFountain:chosenFountain];
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath

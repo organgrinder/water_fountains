@@ -1,20 +1,13 @@
 TO DO
-
-- change static list to show some actual known fountains
-- show callout box on map for the item selected from the list when return to map from list
-
 - put project on gitHub
 - sign up for Apple stuff required to put app on phone
 - put app on phone
 
---> REFACTOR
-- repetition
+REFACTOR
 - opacity for objects lower down the chain
-- actuaTitle stuff
 - some kind of array for initializing static list of fountains
 
 - ability to add fountains to map
-- ability to comment on fountains
 
 - show user on map
 - zoom/pan to current location
@@ -23,10 +16,10 @@ TO DO
 
 Maybe:
 - icon in callout box
-- icon on map for water foutains
-- address of fountain in callout/list
+- icon on map instead of pin
+- icon in list
+- show address of fountain instead of lat/lng
 - ability to delete fountains
-- icon in list for fountain
 
 ----------------------------------------------
 completing everything above this line is success
@@ -36,6 +29,11 @@ a. show routes/painted streets
 b. show elevation heat map
 
 DONE
+- persist changes to comments across app restarts
+- save changes to comments
+- ability to change comments
+- change static list to show some actual known fountains
+- show callout box on map for the item selected from the list when return to map from list
 - better titles, back buttons
 - put project under source control
 - show comments when clicking on disclosure detail in map view
@@ -55,3 +53,5 @@ DONE
 DONE - REFACTOR
 - pass the annotation instead of 3 vars
 - renamed classes, mapView
+- *actuaTitle stuff
+- repetition
