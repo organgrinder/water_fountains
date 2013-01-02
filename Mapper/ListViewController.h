@@ -18,7 +18,7 @@
 
 @interface ListViewController : UITableViewController
 
-@property (nonatomic, strong)NSArray *fountainList;
+@property (nonatomic) NSArray *fountainList;
 @property (nonatomic, weak) id  delegate;
 
 @end

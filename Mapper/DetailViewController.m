@@ -24,9 +24,9 @@
 
 #pragma mark - UITextViewDelegate Protocol
 
+// move the view into visible range when keyboard appears
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    // move the view into visible range
     [textView bringSubviewToFront:textView];
     [UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDelegate:self];
@@ -36,6 +36,7 @@
 	[UIView commitAnimations];
 }
 
+// disappear keyboard when user hits "done"
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     if ([text isEqualToString:@"\n"]) {
@@ -62,21 +63,7 @@
     [self.delegate detailViewController:self updatedComments:textView.text forAnnotation:self.annotation];
 }
 
-#pragma mark - other stuff
-
-- (void)awakeFromNib
-{
-    // when initialized from a storyboard
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - Setting the view
 
 - (void)viewDidLoad
 {
@@ -86,8 +73,9 @@
         GenericAnnotation *annotationToDisplay = self.annotation;
         
         self.fountainTitle.text = annotationToDisplay.title;
-        self.location.text = annotationToDisplay.subtitle;;
+        self.location.text = annotationToDisplay.subtitle;
         self.location.layer.zPosition = -1;
+        
         self.comments.text = annotationToDisplay.comments;
         self.comments.delegate = self;
         self.comments.layer.cornerRadius = 5;
@@ -101,7 +89,6 @@
     [self setComments:nil];
     [self setTitle:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

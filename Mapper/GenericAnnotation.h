@@ -13,7 +13,7 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, readonly, copy) NSString *subtitle;
 @property (nonatomic) NSString *comments;
-@property (nonatomic, readonly) int number;
+@property (nonatomic) int number;
 
 - (id) initWithTitle:(NSString *)title
           coordinate:(CLLocationCoordinate2D)coordinate

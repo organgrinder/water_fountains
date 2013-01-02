@@ -19,11 +19,11 @@
 
 @interface DetailViewController : UIViewController <UITextViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *fountainTitle;
-@property (weak, nonatomic) IBOutlet UILabel *location;
-@property (weak, nonatomic) IBOutlet UITextView *comments;
+@property (nonatomic, weak) IBOutlet UILabel *fountainTitle;
+@property (nonatomic, weak) IBOutlet UILabel *location;
+@property (nonatomic, weak) IBOutlet UITextView *comments;
 
-@property (weak, nonatomic) id annotation;
-@property (weak) id delegate;
+@property (nonatomic, weak) id annotation;
+@property (nonatomic, weak) id delegate;
 
 @end

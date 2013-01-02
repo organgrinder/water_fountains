@@ -21,23 +21,43 @@
 @synthesize mapView = _mapView;
 @synthesize annotationForDetailView = _annotationForDetailView;
 
-#pragma mark DetailViewControllerDelegate
+#pragma mark Detail view controller delegate
 
+// save changes to comments when detail view controller says they have changed
 - (void)detailViewController:(DetailViewController *)sender
              updatedComments:(NSString *)newComments 
-               forAnnotation:(id)annotation
+               forAnnotation:(GenericAnnotation *)annotation
 {
-    for (GenericAnnotation *currentAnnotation in self.mapView.annotations) {
-        if ([currentAnnotation isEqual:annotation]) {
-            currentAnnotation.comments = newComments;
-            NSString *key = [NSString stringWithFormat:@"fountain%i",
-                             currentAnnotation.number];
-            [[NSUserDefaults standardUserDefaults] setObject:newComments forKey:key];
-//            NSLog(@"new comments for");
-//            NSLog(key);
-//            NSLog([[NSUserDefaults standardUserDefaults] stringForKey:key]);
-        }
-    }
+    annotation.comments = newComments;
+    NSString *key = [NSString stringWithFormat:@"fountain%i", annotation.number];
+    [[NSUserDefaults standardUserDefaults] setObject:newComments forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark List view controller delegate
+
+// when returning form list view, center map on selected fountain and show callout
+- (void)listViewController:(ListViewController *)listView choseFountain:(id)fountain
+{
+    GenericAnnotation *chosenAnnotation = fountain;
+    
+    CLLocationCoordinate2D newCenter;
+    newCenter.latitude = chosenAnnotation.coordinate.latitude;
+    newCenter.longitude = chosenAnnotation.coordinate.longitude;
+    [self.mapView setCenterCoordinate:newCenter];
+    
+    [self.mapView selectAnnotation:chosenAnnotation animated:TRUE];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark Navigation
+
+// segue to detail view when user taps callout accessory on map
+- (void)mapView:(MKMapView *)sender annotationView:(MKAnnotationView *)aView calloutAccessoryControlTapped:(UIControl *)control
+{
+    self.annotationForDetailView = aView.annotation;
+    [self performSegueWithIdentifier:@"Map to Detail" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -51,24 +71,7 @@
     }
 }
 
-// when returning form list view, center map on selected fountain and show callout
-- (void)listViewController:(ListViewController *)listView choseFountain:(id)fountain
-{
-    GenericAnnotation *chosenAnnotation = fountain;
-
-    CLLocationCoordinate2D newCenter;
-    newCenter.latitude = chosenAnnotation.coordinate.latitude;
-    newCenter.longitude = chosenAnnotation.coordinate.longitude;
-    [self.mapView setCenterCoordinate:newCenter];
-    
-    for (id<MKAnnotation> currentAnnotation in self.mapView.annotations) {       
-        if ([currentAnnotation isEqual:chosenAnnotation]) {
-            [self.mapView selectAnnotation:currentAnnotation animated:FALSE];
-        }
-    }
-
-    [self.navigationController popViewControllerAnimated:YES];
-}
+#pragma mark Setting the initial map
 
 - (MKAnnotationView *)mapView:(MKMapView *)sender
             viewForAnnotation:(id <MKAnnotation>)annotation
@@ -80,18 +83,10 @@
     }
     
     aView.canShowCallout = YES;
-    aView.annotation = annotation; // yes, this happens twice if no dequeue
+    aView.annotation = annotation; // happens twice if no dequeue
     aView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure]; 
     
     return aView;
-}
-
-- (void)mapView:(MKMapView *)sender 
- annotationView:(MKAnnotationView *)aView
-calloutAccessoryControlTapped:(UIControl *)control
-{
-    self.annotationForDetailView = aView.annotation;
-    [self performSegueWithIdentifier:@"Map to Detail" sender:self];
 }
 
 - (void)setMapView:(MKMapView *)mapView
@@ -99,7 +94,6 @@ calloutAccessoryControlTapped:(UIControl *)control
     _mapView = mapView;
     [self initialzeViewPort];
     
-    // add a static list of annotations to the map
     [self.mapView addAnnotations:[self staticFountainList]];
 }
 
@@ -137,83 +131,82 @@ calloutAccessoryControlTapped:(UIControl *)control
     return YES;
 }
 
-// returns a list of sample fountains at predefined locations
+#pragma mark Helper methods for initializing annotations array
+
+// returns a static list of sample fountains at predefined locations
 - (NSArray *)staticFountainList
 {
     NSMutableArray *fountains = [[NSMutableArray alloc] init];
     
     for (int i = 0; i <= 7; i++) {
-        GenericAnnotation *myNewAnnotation = [self oneStaticFountain:i];
-        [fountains addObject:myNewAnnotation];
+        [fountains addObject:[self oneStaticFountain:i]];
     }
     
     return fountains;
 }
 
-// helper method to add list of fountains to the map
-- (GenericAnnotation *)oneStaticFountain:(int)number
+// helper method to create one of several predefined fountain annotations
+// in a larger app, this would be in a database or at least some kind of array
+- (GenericAnnotation *)oneStaticFountain:(int)fountainNum
 {
     CLLocationCoordinate2D myCoords;
     NSString *myTitle = @"Water Fountain"; // default title
     NSString *myComments = @"No comments yet"; // default comments
 
     // simulate user-entered data
-    if (number == 0) {
+    if (fountainNum == 0) {
         myCoords.latitude = 37.79;
         myCoords.longitude = -122.39;
         // fountain 0 has no comments
         myTitle = @"Fountain of Youth";
-    } else if (number ==1) {
+    } else if (fountainNum == 1) {
         myCoords.latitude = 37.78;
         myCoords.longitude = -122.39;
         myComments = @"This one is hard to find - it's behind the bathroom.";
         // fountain 1 has no custom title;
-    } else if (number ==2) {
+    } else if (fountainNum == 2) {
         myCoords.latitude = 37.79;
         myCoords.longitude = -122.40;
         myComments = @"They turn the fountain off in winter - why?? It never freezes in SF!";
         myTitle = @"Favorite Drinking Spot";        
-    } else if (number ==3) {
+    } else if (fountainNum == 3) {
         myCoords.latitude = 37.75;
         myCoords.longitude = -122.41;
         myComments = @"This fountain smells funny.";
         myTitle = @"First Fountain";
-    } else if (number ==4) {
+    } else if (fountainNum == 4) {
         myCoords.latitude = 37.78;
         myCoords.longitude = -122.44;
         myComments = @"The water at this fountain is nice and cold.";
         myTitle = @"Lifesaver";
-    } else if (number == 5) {
+    } else if (fountainNum == 5) {
         myCoords.latitude = 37.77203773200978;
         myCoords.longitude = -122.44771242141724;
         myComments = @"By the bathrooms.  May be closed for construction.  Approximate location.";
         myTitle = @"Panhandle Fountain";
-    } else if (number == 6) {
+    } else if (fountainNum == 6) {
         myCoords.latitude = 37.77591116824674;
         myCoords.longitude = -122.42442816495895;
         myComments = @"In the little park in the middle of the road.";
         myTitle = @"Hayes Valley Sipper";
-    } else if (number == 7) {
+    } else if (fountainNum == 7) {
         myCoords.latitude = 37.79368566585406;
         myCoords.longitude = -122.39194393157959;
         myComments = @"It's a TRICK - the fountain is DRY!  Do not be fooled!";
         myTitle = @"Rocket Fountain";
     }
 
-    NSString *key = [NSString stringWithFormat:@"fountain%i", number];
-    NSString *savedComments;
-    savedComments = [[NSUserDefaults standardUserDefaults] stringForKey:key];
+    NSString *key = [NSString stringWithFormat:@"fountain%i", fountainNum];
+    
+    // when user makes changes to comments, edited comments are saved to NSUserDefaults
+    NSString *savedComments = [[NSUserDefaults standardUserDefaults] stringForKey:key];
 
     if (savedComments) myComments = savedComments;
 
-//    NSLog(key);
-//    if (savedComments) NSLog(savedComments);
-//    else NSLog(@"no saved comments");
-        
     GenericAnnotation *myAnnotation = [[GenericAnnotation alloc] initWithTitle:myTitle
                                                                     coordinate:myCoords 
                                                                       comments:myComments
-                                                                        number:number];
+                                                                        number:fountainNum];
     return myAnnotation;
 }
 
