@@ -9,7 +9,8 @@
 
 @implementation GenericAnnotation
 
-// class is called 'GenericAnnotation' so it could be used in the future for annotations besides water fountains
+// class is called 'GenericAnnotation' so it could be used in the future 
+// for annotations besides water fountains
 
 @synthesize coordinate = _coordinate;
 @synthesize title = _title;
@@ -32,9 +33,9 @@
     return self;
 }
 
+// subtitle is just a readable version of the coordinate
 - (NSString *) subtitle
 {
-    // subtitle is just a readable version of the coordinate
     return [NSString stringWithFormat:@"lat, lng: %f, %f",
         self.coordinate.latitude,
         self.coordinate.longitude];    

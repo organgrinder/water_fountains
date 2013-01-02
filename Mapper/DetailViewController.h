@@ -23,7 +23,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *location;
 @property (nonatomic, weak) IBOutlet UITextView *comments;
 
-@property (nonatomic, weak) id annotation;
+@property (nonatomic) id annotation;
 @property (nonatomic, weak) id delegate;
 
 @end
