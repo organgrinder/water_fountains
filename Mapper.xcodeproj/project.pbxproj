@@ -17,7 +17,7 @@
 		C4171A4C16855D80009BAE94 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4171A4B16855D80009BAE94 /* MapViewController.m */; };
 		C4171A53168560B7009BAE94 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4171A52168560B7009BAE94 /* MapKit.framework */; };
 		C436E5B21690E49600ADE082 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C436E5B11690E49600ADE082 /* DetailViewController.m */; };
-		C438A7ED1693E67F006E61E9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C438A7EC1693E67F006E61E9 /* README.md */; };
+		C438A7F01693EC57006E61E9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C438A7EF1693EC57006E61E9 /* README.md */; };
 		C4B829A2168A403600DD1789 /* Objectives.txt in Resources */ = {isa = PBXBuildFile; fileRef = C4B829A1168A403600DD1789 /* Objectives.txt */; };
 		C4B829AC168A694800DD1789 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4B829AB168A694800DD1789 /* CoreLocation.framework */; };
 		C4B829AF168B8A8C00DD1789 /* GenericAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B829AE168B8A8C00DD1789 /* GenericAnnotation.m */; };
@@ -41,7 +41,7 @@
 		C4171A52168560B7009BAE94 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C436E5B01690E49600ADE082 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		C436E5B11690E49600ADE082 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		C438A7EC1693E67F006E61E9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		C438A7EF1693EC57006E61E9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C4B829A1168A403600DD1789 /* Objectives.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Objectives.txt; sourceTree = "<group>"; };
 		C4B829AB168A694800DD1789 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C4B829AD168B8A8C00DD1789 /* GenericAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericAnnotation.h; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 				C436E5B01690E49600ADE082 /* DetailViewController.h */,
 				C436E5B11690E49600ADE082 /* DetailViewController.m */,
 				C4B829A1168A403600DD1789 /* Objectives.txt */,
-				C438A7EC1693E67F006E61E9 /* README.md */,
+				C438A7EF1693EC57006E61E9 /* README.md */,
 				C4171A3C16855D80009BAE94 /* Supporting Files */,
 			);
 			path = Mapper;
@@ -181,7 +181,7 @@
 				C4171A4016855D80009BAE94 /* InfoPlist.strings in Resources */,
 				C4171A4916855D80009BAE94 /* MainStoryboard.storyboard in Resources */,
 				C4B829A2168A403600DD1789 /* Objectives.txt in Resources */,
-				C438A7ED1693E67F006E61E9 /* README.md in Resources */,
+				C438A7F01693EC57006E61E9 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
