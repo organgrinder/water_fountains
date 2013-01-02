@@ -155,29 +155,29 @@
 
     // simulate user-entered data
     if (fountainNum == 0) {
-        myCoords.latitude = 37.79;
-        myCoords.longitude = -122.39;
+        myCoords.latitude = 37.778703223837695;
+        myCoords.longitude = -122.38756656646729;
         // fountain 0 has no comments
         myTitle = @"Fountain of Youth";
     } else if (fountainNum == 1) {
-        myCoords.latitude = 37.78;
-        myCoords.longitude = -122.39;
+        myCoords.latitude =  37.80669003118687;
+        myCoords.longitude = -122.43433356285095;
         myComments = @"This one is hard to find - it's behind the bathroom.";
         // fountain 1 has no custom title;
     } else if (fountainNum == 2) {
-        myCoords.latitude = 37.79;
-        myCoords.longitude = -122.40;
+        myCoords.latitude = 37.807478357821374;
+        myCoords.longitude = -122.42207050323486;
         myComments = @"They turn the fountain off in winter - why?? It never freezes in SF!";
         myTitle = @"Favorite Drinking Spot";        
     } else if (fountainNum == 3) {
-        myCoords.latitude = 37.75;
-        myCoords.longitude = -122.41;
+        myCoords.latitude = 37.775938728915946;
+        myCoords.longitude = -122.43464469909668;
         myComments = @"This fountain smells funny.";
         myTitle = @"First Fountain";
     } else if (fountainNum == 4) {
-        myCoords.latitude = 37.78;
-        myCoords.longitude = -122.44;
-        myComments = @"The water at this fountain is nice and cold.";
+        myCoords.latitude = 37.79555931727373;
+        myCoords.longitude = -122.39357471466064;
+        myComments = @"This one is inside the ferry building.";
         myTitle = @"Lifesaver";
     } else if (fountainNum == 5) {
         myCoords.latitude = 37.77203773200978;
